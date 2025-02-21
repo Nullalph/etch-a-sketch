@@ -5,6 +5,7 @@ const container = document.querySelector("#grid-container");
 const newGrid = document.querySelector("#new-grid");
 newGrid.addEventListener("click", () => {
     let sideLength = prompt("Enter a side-length between 10 and 100");
+    if (!sideLength) return;
     if (sideLength < 10 || sideLength > 100) {
         alert("Invalid side-length!");
     }
@@ -37,3 +38,10 @@ function clearGrid() {
         container.removeChild(row);
     }
 }
+
+container.addEventListener("mouseover", (event) => {
+    console.log(event.target);
+    if (event.target.className === "box")
+        event.target.style.backgroundColor = "black";
+    
+});

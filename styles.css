@@ -25,7 +25,5 @@ body {
 
 .box {
     border: 1px solid black;
-    /* width: 2px; */
-    /* height: 2px; */
     flex: auto;
 }
