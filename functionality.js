@@ -1,12 +1,12 @@
-
-
+const DEFAULT_SL = 10;
 const container = document.querySelector("#grid-container");
+let drawing = false;
 
 const newGrid = document.querySelector("#new-grid");
 newGrid.addEventListener("click", () => {
     let sideLength = prompt("Enter a side-length between 10 and 100");
-    if (!sideLength) return;
-    if (sideLength < 10 || sideLength > 100) {
+    if (!sideLength) initializeGrid(DEFAULT_SL);
+    else if (sideLength < 10 || sideLength > 100) {
         alert("Invalid side-length!");
     }
     else initializeGrid(sideLength);
@@ -39,9 +39,25 @@ function clearGrid() {
     }
 }
 
+container.addEventListener("mousedown", (event) => {
+    console.log("down");
+    if (event.target.className === "box" && event.button === 0) {
+        drawing = true;
+        event.target.style.backgroundColor = "black";
+    }
+});
+
+container.addEventListener("mouseup", () => {
+    console.log("up");
+    drawing = false;
+});
+
 container.addEventListener("mouseover", (event) => {
-    console.log(event.target);
+    console.log("over");
+    if (!drawing) return;
+
     if (event.target.className === "box")
         event.target.style.backgroundColor = "black";
-    
 });
+
+initializeGrid(DEFAULT_SL);
