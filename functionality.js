@@ -41,6 +41,7 @@ function clearGrid() {
 
 container.addEventListener("mousedown", (event) => {
     console.log("down");
+    event.preventDefault();
     if (event.target.className === "box" && event.button === 0) {
         drawing = true;
         event.target.style.backgroundColor = "black";
@@ -49,11 +50,13 @@ container.addEventListener("mousedown", (event) => {
 
 container.addEventListener("mouseup", () => {
     console.log("up");
+    // event.preventDefault();
     drawing = false;
 });
 
 container.addEventListener("mouseover", (event) => {
     console.log("over");
+    // event.preventDefault();
     if (!drawing) return;
 
     if (event.target.className === "box")
