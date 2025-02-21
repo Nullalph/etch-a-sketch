@@ -69,7 +69,7 @@ container.addEventListener("mousedown", (event) => {
     event.preventDefault();
     if (event.target.className === "box" && event.button === 0) {
         drawing = true;
-        event.target.style.backgroundColor = "black";
+        event.target.style.backgroundColor = "pink";
     }
 });
 
@@ -85,7 +85,7 @@ container.addEventListener("mouseover", (event) => {
     if (!drawing) return;
 
     if (event.target.className === "box")
-        event.target.style.backgroundColor = "black";
+        event.target.style.backgroundColor = "pink";
 });
 
 initializeGrid(DEFAULT_SL);
