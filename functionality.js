@@ -16,6 +16,7 @@ const toggleLines = document.querySelector("#toggle-gridlines");
 toggleLines.addEventListener("click", () => toggleGridLines());
 
 function toggleGridLines() {
+    // console.log("toggling...");
     boxes = container.querySelectorAll(".box");
     if (toggleLines.checked) {
         for (box of boxes) {
@@ -44,6 +45,7 @@ function createBox() { // Helper function for initializeGrid()
 
 function initializeGrid(dimension) {
     clearGrid();
+    toggleLines.checked = true;
     for (i = 0; i < dimension; ++i) {
         const row = document.createElement("div");
         row.setAttribute("class", "row");
