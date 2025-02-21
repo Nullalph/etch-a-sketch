@@ -5,12 +5,35 @@ let drawing = false;
 const newGrid = document.querySelector("#new-grid");
 newGrid.addEventListener("click", () => {
     let sideLength = prompt("Enter a side-length between 10 and 100");
-    if (!sideLength) initializeGrid(DEFAULT_SL);
+    if (!sideLength) resetGrid();
     else if (sideLength < 10 || sideLength > 100) {
         alert("Invalid side-length!");
     }
     else initializeGrid(sideLength);
 });
+
+const toggleLines = document.querySelector("#toggle-gridlines");
+toggleLines.addEventListener("click", () => toggleGridLines());
+
+function toggleGridLines() {
+    boxes = container.querySelectorAll(".box");
+    if (toggleLines.checked) {
+        for (box of boxes) {
+            box.style.border = "1px solid black";
+        }
+    } else {
+        for (box of boxes) {
+            box.style.border = "none";
+        }
+    }
+}
+
+function resetGrid() {
+    boxes = container.querySelectorAll(".box");
+    for (box of boxes) {
+        box.style.backgroundColor = "initial";
+    }
+}
 
 
 function createBox() { // Helper function for initializeGrid()
